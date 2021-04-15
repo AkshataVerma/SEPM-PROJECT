@@ -1,0 +1,578 @@
+<html>
+<head>
+<title>
+</title>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Lato:400, 700,300);
+body {
+  font-family: lato, 'helvetica-light';
+  position: relative;
+  text-transform: uppercase;
+  padding: 20px 0;
+}
+
+#amount {
+  font-size: 12px;
+}
+
+#amount strong {
+  font-size: 14px;
+}
+
+#card-back {
+  top: 40px;
+  right: 0;
+  z-index: -2;
+}
+
+#card-btn {
+  background-color: yellow;
+  color: #084760;
+  position: absolute;
+  bottom: -55px;
+  right: 0;
+  width: 150px;
+  border-radius: 8px;
+  height: 42px;
+  font-size: 12px;
+  font-family: lato, 'helvetica-light', 'sans-serif';
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+#card-btn:hover {
+  background-color: rgba(251, 251, 251, 1);
+}
+
+#card-cvc {
+  width: 60px;
+  margin-bottom: 0;
+}
+
+#card-front,
+#card-back {
+  position: absolute;
+  background-color: #250F19;
+  width: 390px;
+  height: 250px;
+  border-radius: 6px;
+  padding: 20px 30px 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 300;
+  color: white;
+}
+
+#card-image {
+  float: right;
+  height: 100%;
+}
+
+#card-image i {
+  font-size: 40px;
+}
+
+#card-month {
+  width: 45% !important;
+}
+
+#card-number,
+#card-holder {
+  width: 100%;
+}
+
+#card-stripe {
+  width: 100%;
+  height: 55px;
+  background-color: #3d5266;
+  position: absolute;
+  right: 0;
+}
+
+#card-success {
+  color: #00b349;
+}
+
+#card-token {
+  display: none;
+}
+
+#card-year {
+  width: 45%;
+  float: right;
+}
+
+#cardholder-container {
+  width: 60%;
+  display: inline-block;
+}
+
+#cvc-container {
+  position: absolute;
+  width: 110px;
+  right: -115px;
+  bottom: -10px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+#cvc-container label {
+  width: 100%;
+}
+
+#cvc-container p {
+  font-size: 6px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  letter-spacing: .5px;
+}
+
+#form-container {
+  margin: auto;
+  width: 500px;
+  height: 290px;
+  position: relative;
+}
+
+#form-errors {
+  color: #eb0000;
+}
+
+#form-errors,
+#card-success {
+  background-color: white;
+  width: 500px;
+  margin: 0 auto 10px;
+  height: 50px;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-weight: 400;
+  box-sizing: border-box;
+  line-height: 46px;
+  letter-spacing: .5px;
+  text-transform: none;
+}
+
+#form-errors p,
+#card-success p {
+  margin: 0 5px;
+  display: inline-block;
+}
+
+#exp-container {
+  margin-left: 10px;
+  width: 32%;
+  display: inline-block;
+  float: right;
+}
+
+.hidden {
+  display: none;
+}
+
+#image-container {
+  width: 100%;
+  position: relative;
+  height: 55px;
+  margin-bottom: 5px;
+  line-height: 55px;
+}
+
+#image-container img {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+input {
+  border: none;
+  outline: none;
+  background-color: #54C339;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  margin: 0 0 25px;
+  color: white;
+  font-size: 10px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: lato, 'helvetica-light', 'sans-serif';
+  letter-spacing: .7px;
+}
+
+input::-webkit-input-placeholder {
+  color: #fff;
+  opacity: 0.7;
+  font-family: lato, 'helvetica-light', 'sans-serif' letter-spacing: 1px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+
+input:-moz-placeholder {
+  color: #fff;
+  opacity: 0.7;
+  font-family: lato, 'helvetica-light', 'sans-serif' letter-spacing: 1px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+
+input::-moz-placeholder {
+  color: #fff;
+  opacity: 0.7;
+  font-family: lato, 'helvetica-light', 'sans-serif' letter-spacing: 1px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+
+input:-ms-input-placeholder {
+  color: #fff;
+  opacity: 0.7;
+  font-family: lato, 'helvetica-light', 'sans-serif' letter-spacing: 1px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+
+input.invalid {
+  border: solid 2px #eb0000;
+  height: 34px;
+}
+
+label {
+  display: block;
+  margin: 0 auto 7px;
+}
+
+#shadow {
+  position: absolute;
+  right: 0;
+  width: 284px;
+  height: 214px;
+  top: 36px;
+  background-color: #000;
+  z-index: -1;
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+body{
+  background:"backg51.jpg";
+}
+.wrap{
+  margin-left:20px;
+}
+.box{
+  width:40%;
+  height:200px;
+  float:left;
+  background-color:white; 
+  margin:25px 15px;
+  border-radius:5px;
+}
+.box h3{
+  font-family: 'Didact Gothic', sans-serif;
+  font-weight:normal;
+  text-align:center;
+  padding-top:60px;
+  font-size:10;
+  color:#fff;
+}
+.box1{
+  background-color: #EBA39E;
+}
+.box2{
+  background-color: #EDE89A;
+}
+.box3{
+  background-color: #9EEBA1;
+}
+.box4{
+  background-color: #9EEBBF;
+}
+.box5{
+  background-color: #9ED9EB;
+}
+.box6{
+  background-color: #9EB3EB;
+}
+.box7{
+  background-color: #DB9EEB;
+}
+.box8{
+  background-color: #C49EEB;
+}
+.shadow1, .shadow2, .shadow3,.shadow4,.shadow5,.shadow6,.shadow7,.shadow8{
+  position:relative;
+}
+.shadow1,.shadow2,.shadow3,.shadow4,.shadow5,.shadow6,.shadow7,.shadow8{
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;
+}
+/*****************************************************************dashed border
+****************************************************************/
+.shadow1 h3, .shadow2 h3, .shadow3 h3, .shadow4 h3, .shadow5 h3, .shadow6 h3, .shadow7 h3, .shadow8 h3{
+  width:87%;
+  height:100px;
+  margin-left:6%;
+  border:2px dashed #F7EEEE;
+  border-radius:5px;
+}
+/****************************************************************
+*styling shadows
+****************************************************************/
+.shadow1:before, .shadow1:after{
+  position:absolute;
+  content:"";
+  bottom:12px;left:15px;top:80%;
+  width:45%;
+  background:#9B7468;
+  z-index:-1;
+  -webkit-box-shadow: 0 20px 15px #9B7468;
+  -moz-box-shadow: 0 20px 15px #9B7468;
+  box-shadow: 0 20px 15px #9B7468;
+  -webkit-transform: rotate(-6deg);
+  -moz-transform: rotate(-6deg);
+  transform: rotate(-6deg);
+}
+.shadow1:after{
+  -webkit-transform: rotate(6deg);
+  -moz-transform: rotate(6deg);
+  transform: rotate(6deg);
+  right: 15px;left: auto;
+}
+.shadow2:before{
+  position:absolute;
+  content:"";
+  width:80%;
+  top:140px;bottom:15px;left:30px;
+  background-color:#9F8641;
+  z-index:-1;
+  -webkit-box-shadow:0 23px 17px 0 #9F8641;
+  -moz-box-shadow:0 23px 17px 0 #9F8641;
+  box-shadow: 0 23px 17px 0 #9F8641;
+  -webkit-transform:rotate(-4deg);
+  -moz-transform:rotate(-4deg);
+  transform:rotate(-4deg);
+}
+.shadow3:before, .shadow3:after{
+  content:"";
+  position:absolute;
+  bottom:0;top:2px;left:15px;right:15px;
+  z-index:-1;
+  border-radius:100px/30px;
+ -webkit-box-shadow:0 0 30px 2px #479F41;
+  -moz-box-shadow:0 0 30px 2px #479F41;
+  box-shadow: 0 0 30px 2px #479F41;
+}
+.shadow4:before, .shadow4:after{
+  position:absolute;
+  content:"";
+  top:14px;bottom:14px;left:0;right:0;
+  box-shadow:0 0 25px 3px #548E7F;
+  border-radius:100px/10px;
+  z-index:-1;
+}
+.shadow5:before, .shadow5:after{
+  position:absolute;
+  content:"";
+  box-shadow:0 10px 25px 20px #518C96;
+  top:40px;left:10px;bottom:50px;
+  width:15%;
+  z-index:-1;
+  -webkit-transform: rotate(-8deg);
+  -moz-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+}
+.shadow5:after{
+  -webkit-transform: rotate(8deg);
+  -moz-transform: rotate(8deg);
+  transform: rotate(8deg);
+  right: 10px;left: auto;
+}
+.shadow6:before, .shadow6:after{
+  position:absolute;
+  content:"";
+  top:100px;bottom:5px;left:30px;right:30px;
+  z-index:-1;
+  box-shadow:0 0 40px 13px #486685;
+  border-radius:100px/20px; 
+}
+.shadow7:before, .shadow7:after{
+  position:absolute;
+  content:"1";
+  top:25px;left:20px;bottom:150px;
+  width:80%;
+  z-index:-1;
+  -webkit-transform: rotate(-6deg);
+  -moz-transform: rotate(-6deg);
+  transform: rotate(-6deg);
+}
+.shadow7:before{
+  box-shadow:10px -10px 30px 15px #984D8E;
+}
+.shadow7:after{
+  -webkit-transform: rotate(7deg);
+  -moz-transform: rotate(7deg);
+  transform: rotate(7deg);
+  bottom: 25px;top: auto;
+  box-shadow:10px 10px 30px 15px #984D8E;
+}
+.shadow8{
+  box-shadow:
+ -6px -6px 8px -4px rgba(250,254,118,0.75),
+  6px -6px 8px -4px rgba(254,159,50,0.75),
+  6px 6px 8px -4px rgba(255,255,0,0.75),
+  6px 6px 8px -4px rgba(0,0,255,2.75);
+}
+h3 {
+  display: block;
+  color: yellow;
+  text-transform: uppercase;
+  font-family: 'Forte';
+  text-decoration: Bold;
+  text-shadow: 2px 2px 4px #000000;
+  padding-bottom: 10px;
+  font-size: 40
+}
+</style>
+</head>
+<body background="backg28.jpg">
+<div style="position:absolute;left:25%;top:70%"><h3>TERMS AND CONDITIONS</h3></div>
+<div style="position:absolute;left:70%;top:6%">
+<img src="p.png" width=400>
+</div>
+<div style="position:absolute;left:1%;top:-5%">
+<img src="alogo.png" width=400>
+</div>
+<div id="card-success" class="hidden">
+  <i class="fa fa-check"></i>
+  <p>Payment Successful!</p>
+</div>
+<div id="form-errors" class="hidden">
+  <i class="fa fa-exclamation-triangle"></i>
+  <p id="card-error">Card error</p>
+</div>
+<div style="position:absolute;left:30%;top:-4%"><h3>TABLE BOOKING PAYMENT</h3></div>
+<br>
+<br>
+<br>
+<br>
+<div id="form-container">
+
+  <div id="card-front">
+    <div id="shadow"></div>
+    <div id="image-container">
+      <span id="amount">paying: <strong>$   </strong></span>
+      <span id="card-image">
+      
+        </span>
+    </div>
+    <!--- end card image container --->
+
+    <label for="card-number">
+        Card Number
+      </label>
+    <input type="text" id="card-number" placeholder="1234 5678 9101 1112" length="16">
+    <div id="cardholder-container">
+      <label for="card-holder">Card Holder
+      </label>
+      <input type="text" id="card-holder" placeholder="e.g. John Doe" />
+    </div>
+    <!--- end card holder container --->
+    <div id="exp-container">
+      <label for="card-exp">
+          Expiration
+        </label>
+      <input id="card-month" type="text" placeholder="MM" length="2">
+      <input id="card-year" type="text" placeholder="YY" length="2">
+    </div>
+        <div id="cvc-container">
+      <label for="card-cvc"> CVC/CVV</label>
+      <input id="card-cvc" placeholder="XXX-X" type="text" min-length="3" max-length="4">
+      <p>Last 3 or 4 digits</p>
+    </div>
+    <!--- end CVC container --->
+    <!--- end exp container --->
+  </div>
+  <!--- end card front --->
+  <div id="card-back">
+    <div id="card-stripe">
+    </div>
+
+  </div>
+  <!--- end card back --->
+  <input type="text" id="card-token" />
+  <button type="button" id="card-btn">Submit</button>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
+<div class="wrap">
+  <div class="box box1 shadow1">
+    <h3>Our detailed terms and conditions are outlined below. Should you have any further queries or requests ahead of your visit, please do not hesitate to contact us.</h3>
+  </div>
+  <div class="box box2 shadow2">
+    <h3>An e-mail address must be provided upon making a booking at any of our restaurants, as this link will be provided on booking confirmation e-mails.
+</h3>
+  </div>
+  <div class="box box3 shadow3">
+    <h3>Please note that during the period of any Government Covid-19 restrictions, some aspects of our regular service may be subject to change. These may include the time period your table may be available, maximum table sizes, closing time, and the opportunity to have drinks before or after your meal at a separate table. Please see further details below, or enquire directly with the restaurant for details of how current restrictions will affect your booking.</h3>
+  </div>
+  <div class="box box4 shadow4">
+    <h3>We can seat up to 35 guests during but we are only able to accommodate so many guests within each half hour period in order to ensure that you receive the best level of service from us, and we do ask that once you have secured a reservation at a particular time that you adhere to that time. We strongly recommended that groups reserve a table in advance.</h3>
+  </div>
+  <div class="box box5 shadow5">
+    <h3>Should you arrive more than 20 minutes after your booking time without forewarning, then you may lose your table to another group. We would respectfully ask that you are ready to be seated at the time of your reservation. Should you arrive after your booking time, we may need to hold you back to a later time to ensure the best possible level of service to all our guests. </h3>
+  </div>
+  <div class="box box6 shadow6">
+    <h3>It is essential that we are notified of any specific dietary requirements prior to your visit to ensure that we can cater for you appropriately. If you have not informed us at the point of booking, please contact the restaurant via contact number  to discuss your requirements with a manager.Tables are allocated on the day by the restaurant team and although we will do everything we can to allocate a table in your preferred area of the restaurant, we cannot always guarantee this. </h3>
+  </div>
+  <div class="box box7 shadow7">
+    <h3>SECTION 2 - CANCELLATION POLICY
+Amor habrjentos continued viability relies on reservations being honoured by our customers, and adequate notice being given of any changes or cancellations. 
+</h3>
+  </div>
+  <div class="box box8 shadow8">
+    <h3>Accordingly, the following applies: 
+
+We reserve the right to charge a cancellation fee per cover for any booking that is cancelled, or if
+numbers are reduced without prior notice. 
+For all bookings, you must notify us of a cancellation or any changes to the number of guests
+at least 3 hours prior to your booking. For groups over 10 people, including Private Hire & Christmas parties, the required noticed period is 120 hours (5 days).
+Amor habrjentos reserves the right to charge a cancellation fee of Rs 50.00/- per person for any
+bookings changed or cancelled within this 3 hour notice period (or 120 hours for groups over 10)
+The cancellation fee reflects the cost incurred by Amor Habrjentos in terms of staffing, food, and any
+lost revenue as a result of turning away other potential bookings. 
+We will notify you if any cancellation fee is applied. 
+Any bookings which fail to turn up without any prior notice, will also incur a  Rs 70.00/- per person
+fee. 
+Where possible, the Amor habrjentos team will actively manage restaurant bookings by checking
+attendance with the main guests/contact we have in our bookings diary.</h3>
+  </div>
+</div>  
+<!--- end form container --->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script src="https://use.fontawesome.com/f1e0bf0cbc.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+<html>
+<head>
+ <meta charset="utf-8" />
+<title>
+www.amorhabrientos.com
+</title>
+ <link rel="stylesheet" href="assets/css/styles.css" />
+
+        <!-- Including the Lobster font from Google's Font Directory -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster" />
+
+        <!-- Enabling HTML5 support for Internet Explorer -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+<style>
+.fancyNav{
+    /* Affects the UL element */
+    overflow: hidden;
+    display: inline-block;
+
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    -moz-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    -webkit-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+.fancyNav li{
+    /* Specifying a fallback color and we define CSS3 gradients for the major browsers: */
+
+    background-color: #f0f0f0;
+    background-image: -webkit-gradient(linear,left top, left bottom,from(#0E3734), color-stop(0.5,#0E3734), color-stop(0.51, #e6e6e6));
+    background-image: -moz-linear-gradient(#5DCD10 0%, #5DCD10 50%, #e6e6e6 51%);
+    background-image: -o-linear-gradient(#5DCD10 0%, #5DCD10 50%, #e6e6e6 51%);
+    background-image: -ms-linear-gradient(#5DCD10 0%, #0E3734 50%, #e6e6e6 51%);
+    background-image: linear-gradient(#0E3734 0%, #5DCD10 50%, #e6e6e6 51%);
+
+    border-right: 1px solid rgba(9, 9, 9, 0.125);
+
+    /* Adding a 1px inset highlight for a more polished efect: */
+
+    box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -moz-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -webkit-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+
+    position:relative;
+
+    float: left;
+    list-style: none;
+}
+
+.fancyNav li:after{
+
+    /* This creates a pseudo element inslide each LI */ 
+
+    content:'.';
+    text-indent:-9999px;
+    overflow:hidden;
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:1;
+    opacity:0;
+
+    /* Gradients! */
+
+    background-image:-webkit-gradient(linear, left top, right top, from(rgba(168,168,168,0.5)),color-stop(0.5,rgba(168,168,168,0)), to(rgba(168,168,168,0.5)));
+    background-image:-moz-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:-o-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:-ms-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+
+    /* Creating borders with box-shadow. Useful, as they don't affect the size of the element. */
+
+    box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -moz-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -webkit-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+
+    /* This will create a smooth transition for the opacity property */
+
+    -moz-transition:0.25s all;
+    -webkit-transition:0.25s all;
+    -o-transition:0.25s all;
+    transition:0.25s all;
+}
+
+.fancyNav li:first-child{
+    border-radius: 4px 0 0 4px;
+}
+
+.fancyNav li:first-child:after,
+.fancyNav li.selected:first-child:after{
+    box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -moz-box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -webkit-box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+
+    border-radius:4px 0 0 4px;
+}
+
+.fancyNav li:last-child{
+    border-radius: 0 4px 4px 0;
+}
+
+/* Treating the last LI and li:after elements separately */
+
+.fancyNav li:last-child:after,
+.fancyNav li.selected:last-child:after{
+    box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+    -moz-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+    -webkit-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+
+    border-radius:0 4px 4px 0;
+}
+
+.fancyNav li:hover:after,
+.fancyNav li.selected:after,
+.fancyNav li:target:after{
+    /* This property triggers the CSS3 transition */
+    opacity:1;
+}
+
+.fancyNav:hover li.selected:after,
+.fancyNav:hover li:target:after{
+    /* Hides the targeted li when we are hovering on the UL */
+    opacity:0;
+}
+
+.fancyNav li.selected:hover:after,
+.fancyNav li:target:hover:after{
+    opacity:1 !important;
+}
+
+.fancyNav li a{
+    color: black;
+    text-align: center;
+    display: block;
+    font: 20px/1 Lobster,Arial,sans-serif;
+    padding: 14px  85px 15px;
+    position: relative;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+    z-index:2;
+    text-decoration:none !important;
+    width: 25%;
+    white-space:nowrap;
+}
+
+
+h1 {
+  position: absolute;
+  bottom: 215;
+  right: 530;
+  width: 300px;
+  text-align:center;
+  font-family: Forte;
+  font-size: 90;
+  letter-spacing: 5;
+  word-spacing: 1;
+  text-decoration: bold;
+  color: yellow;
+  text-shadow: 2px 2px 4px #000000;
+  
+  
+}
+h2 {
+  position: absolute;
+  bottom: 200;
+  right: 850;
+  width: 300px;
+  text-align:center;
+  font-family: Forte;
+  font-size: 90;
+  letter-spacing: 5;
+  word-spacing: 3;
+  text-decoration: bold;
+  color: yellow;
+  text-shadow: 2px 2px 4px #000000;
+  
+  
+}
+.GFG {
+            color: white;
+            font-family: Forte;
+            font-size: 50px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+.marqHold {
+    padding: 5px 5px;
+    background: black;
+    color: #fff;
+    position: relative;
+    display: block;
+    margin: 30px 0;
+    text-align: left;
+    overflow: hidden;
+    height: 135px;
+  }
+
+ .marqHold ul { 
+    list-style: none; 
+    padding:0; 
+    margin:0; 
+    position: fixed;
+    white-space: nowrap;
+    left: 110%;
+    animation: marq 50s linear infinite;
+ }
+
+ .marqHold ul li { 
+    display: inline-block;
+    width: 125px;
+    height: 125px;
+    padding: 5px;
+  }
+
+@keyframes marq {
+  from { left: 0%; }
+  to { left: -200%; } 
+  }
+</style>
+</head>
+<body background="backg36.jpg">
+<center>
+
+        <nav>
+            <ul class="fancyNav">
+                <li id="menu"><a href="menu2.html">Menu</a></li>
+                <li id="table"><a href="tablebooking.html">Table Reservations</a></li>
+                <li id="signup"><a href="log.html">Sign In</a></li>
+                <li id="contact"><a href="contact.html">Contact</a></li>
+                <li id="aboutus"><a href="aboutus1.html">About Us</a></li>
+            </ul>
+        </nav></center>
+<center>
+<h2>AMOR</h2><br><h1> HABRIENTOS</h1>
+<p class="GFG">WELCOME  TO</p>
+<br>
+</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="marqHold" loop="true">
+<ul>
+<li>
+<img src="f1.jpg" width="125" height="125" /></li>
+<li>
+<img src="f3.jpg" width="125" height="125" /></li>
+<li>
+<img src="f2.jpg" width="125" height="125" /></li>
+<li>
+<img src="f6.jpg" width="125" height="125" /></li>
+<li>
+<img src="f8.jpg" width="125" height="125" /></li>
+<li>
+<img src="f5.jpg" width="125" height="125" /></li>
+<li>
+<img src="f4.jpg" width="125" height="125" /></li>
+<li>
+<img src="f7.jpg" width="125" height="125" /></li>
+<li>
+<img src="f5.jpg" width="125" height="125" /></li>
+<li>
+<img src="f9.jpg" width="125" height="125" /></li>
+<li>
+<img src="f13.jpg" width="125" height="125" /></li>
+<li>
+<img src="f6.jpg" width="125" height="125" /></li>
+<li>
+<img src="f10.jpg" width="125" height="125" /></li>
+<li>
+<img src="f14.jpg" width="125" height="125" /></li>
+<li>
+<img src="f16.jpg" width="125" height="125" /></li>
+<li>
+<img src="f12.jpg" width="125" height="125" /></li>
+<li>
+<img src="f15.jpg" width="125" height="125" /></li>
+<li>
+<img src="f17.jpg" width="125" height="125" /></li>
+<li>
+<img src="f1.jpg" width="125" height="125" /></li>
+<li>
+<img src="f3.jpg" width="125" height="125" /></li>
+<li>
+<img src="f2.jpg" width="125" height="125" /></li>
+<li>
+<img src="f6.jpg" width="125" height="125" /></li>
+<li>
+<img src="f8.jpg" width="125" height="125" /></li>
+<li>
+<img src="f5.jpg" width="125" height="125" /></li>
+<li>
+<img src="f4.jpg" width="125" height="125" /></li>
+<li>
+<img src="f7.jpg" width="125" height="125" /></li>
+<li>
+<img src="f5.jpg" width="125" height="125" /></li>
+<li>
+<img src="f9.jpg" width="125" height="125" /></li>
+<li>
+<img src="f13.jpg" width="125" height="125" /></li>
+<li>
+<img src="f6.jpg" width="125" height="125" /></li>
+<li>
+<img src="f10.jpg" width="125" height="125" /></li>
+<li>
+<img src="f14.jpg" width="125" height="125" /></li>
+<li>
+<img src="f16.jpg" width="125" height="125" /></li>
+<li>
+<img src="f12.jpg" width="125" height="125" /></li>
+<li>
+<img src="f15.jpg" width="125" height="125" /></li>
+<li>
+<img src="f17.jpg" width="125" height="125" /></li>
+</ul>
+</div>
+
+</body>
+</html>

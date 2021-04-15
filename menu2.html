@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<style>
+body, html {height: 100%}
+body,h1,h2,h3,h4,h5,h6 {font-family: "MV Boli", sans-serif}
+.menu {display: none}
+.bgimg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/w3images/pizza.jpg");
+  min-height: 100%;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: black;
+  border: none;
+  color: yellow;
+  padding: 16px 32px;
+  text-decoration: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 10
+}
+
+</style>
+<body background="backg7.jpg">
+<div style="position:absolute;left:42%;top:18%">
+<img src="alogo.png" width=250>
+</div>
+<center><img src="emmenu4.jpg"></center>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-padding">
+    <span class="w3-tag w3-xlarge">Open from 10am to 12pm</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white w3-hide-small" style="font-size:100px"><br></span>
+    <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size:60px"><b><br></b></span>
+    <p><a href="#menu" class="w3-button w3-xxlarge w3-black">Let me see the menu</a></p>
+  </div>
+</header>
+
+<!-- Menu Container -->
+<div class="w3-container w3-black w3-padding-64 w3-xxlarge" id="menu">
+  <div class="w3-content">
+  
+    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">THE MENU</h1>
+    <div class="w3-row w3-center w3-border w3-border-dark-grey">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Pizza');" id="myLink">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Pizza</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Burger');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Burgers</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Fries');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Fries</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Shakes');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Shakes</div>
+      </a>
+    </div>
+
+    <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
+      <h3><b>Margherita</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>129 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Fresh tomatoes, fresh mozzarella, fresh basil</p>
+      <hr>
+   
+      <h3><b>Formaggio</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>230 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Four cheeses (mozzarella, parmesan, pecorino, jarlsberg)</p>
+      <hr>
+      
+      <h3><b>Chicken</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>350 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Fresh tomatoes, mozzarella, chicken, onions</p>
+      <hr>
+
+      <h3><b>Pineapple'o'clock</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>350 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Fresh tomatoes, mozzarella, fresh pineapple, bacon, fresh basil</p>
+      <hr>
+
+      <h3><b>Meat Town</b> <span class="w3-tag w3-red w3-round">Hot!</span><span class="w3-right w3-tag w3-dark-grey w3-round"><form>230 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Fresh tomatoes, mozzarella, hot pepporoni, hot sausage, beef, chicken</p>
+      <hr>
+
+      <h3><b>Parma</b> <span class="w3-tag w3-grey w3-round">New</span><span class="w3-right w3-tag w3-dark-grey w3-round"><form>350 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Fresh tomatoes, mozzarella, parma, bacon, fresh arugula</p>
+    </div>
+
+    <div id="Burger" class="w3-container menu w3-padding-32 w3-white">
+      <h3><b>Chicken Paradise</b> <span class="w3-tag w3-grey w3-round">Popular</span> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>119 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Special sauce, mozzarella, parmesan, Chicken , Capcicum, Corn</p>
+      <hr>
+   
+      <h3><b>Vegan Burger</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>129 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Mixed Vegetables, Spices, Corn, Spiced Mayonnaise Dressing</p>
+      <hr>
+      
+      <h3><b>Creamy Mashroom</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>139 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Fresh tomatoes, onions, Mashrooms, Baby Corn, Mayo Cheeze, Special Sauce</p>
+      <hr>
+
+      <h3><b>Spicy Tandoori</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>139 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Salmon, Corn, Paneer, garlic, Capcicum, Spices</p>
+    </div>
+
+
+    <div id="Fries" class="w3-container menu w3-padding-32 w3-white">
+      <h3><b>Classic Fries</b> <span class="w3-tag w3-grey w3-round">Basic</span><span class="w3-right w3-tag w3-dark-grey w3-round"><form>70 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Classic Fries with Mayo</p>
+      <hr>
+   
+      <h3><b>Naughty Fries</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>80 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Spicy and Juicy</p>
+      <hr>
+      
+      <h3><b>Creamy Temptation</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>129 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Soicy and Creamy with latto sauces</p>
+      <hr>
+      
+      <h3><b>Peri Peri</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>129 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Peri Spice and yumm</p>
+    </div>
+
+
+      <div id="Shakes" class="w3-container menu w3-padding-32 w3-white">
+      <h3><b>Black Current</b> <span class="w3-tag w3-grey w3-round">Basic</span><span class="w3-right w3-tag w3-dark-grey w3-round"><form>149 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey"></p>
+      <hr>
+   
+      <h3><b>Afgani Dry Fruit</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>159 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Spicy and Juicy</p>
+      <hr>
+      
+      <h3><b>Strawberry Delight</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>149 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Soicy and Creamy with latto sauces</p>
+      <hr>
+      
+      <h3><b>Choco Love</b> <span class="w3-right w3-tag w3-dark-grey w3-round"><form>159 <input type="checkbox"></form></span></h3>
+      <p class="w3-text-grey">Peri Spice and yumm</p>
+    </div><br>
+
+  </div>
+</div>
+<p>Styled input buttons.</p>
+
+<a href="paymentmenu.html"><input type="button" value="Submit" style='width:200px;margin:0 50%;position:relative;left:-90px;'></a>
+<input type="submit" value="Reset" style='width:200px;margin:0 50%;position:relative;left:-90px;'>
+
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-red";
+}
+document.getElementById("myLink").click();
+</script>
+
+</body>
+</html>
